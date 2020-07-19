@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.sama.springbootdemo01.cw.dao.PzhDao">
+
+    <!-- 获取当前年月凭证号 -->
+    <select id="getLastPzhByNy" resultType="int">
+        select max(pzh) from cw_pzh where ny = #{ny};
+    </select>
+
+    <!-- 查询凭证号 -->
+    <select id="getPzhById" resultType="com.sama.springbootdemo01.cw.model.Pzh">
+        select id, ny, pzh, czy, shy, jzy, fdzs, status, logintime, orgcode, makedate from cw_pzh where id= #{id}
+    </select>
+
+    <!-- 新增凭证号 -->
+    <insert id="savePzh" useGeneratedKeys="true" keyProperty="id">
+        insert into cw_pzh (ny, pzh, czy, shy, jzy, fdzs, status, logintime, orgcode, makedate) value (#{ny}, #{pzh}, #{czy}, #{shy}, #{jzy}, #{fdzs}, #{status}, #{logintime}, #{orgcode}, #{makedate});
+    </insert>
+
+    <!-- 修改凭证号 -->
+    <update id="updatePzh">
+        update cw_pzh set ny = #{ny}, pzh = #{pzh}, czy = #{czy}, shy = #{shy}, jzy = #{jzy}, fdzs = #{fdzs}, status = #{status}, logintime = #{logintime}, orgcode = #{orgcode}, makedate = #{makedate} where id = #{id}
+    </update>
+
+    <!-- 删除凭证号 -->
+    <delete id="removePzh">
+        delete from cw_pzh where id = #{id};
+    </delete>
+
+</mapper>

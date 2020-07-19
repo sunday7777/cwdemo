@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.sama.springbootdemo01.system.dao.UserDao">
+
+	<sql id="BASE_COLUMN">
+		id, realname, username, password, groupid, phone, email, orgcode, lastlogintime, nums
+	</sql>
+
+	<!-- 根据用户名获得User -->
+	<select id="getUserByName" resultType="com.sama.springbootdemo01.system.model.User">
+		SELECT <include refid="BASE_COLUMN" /> FROM sys_user WHERE USERNAME = #{username}
+	</select>
+
+	<!-- 根据用户ID获得User -->
+	<select id="getUserById" resultType="com.sama.springbootdemo01.system.model.User">
+		SELECT <include refid="BASE_COLUMN" /> FROM sys_user WHERE id = #{id}
+	</select>
+
+	<!-- 根据行政区划代码获取用户列表 -->
+	<select id="findUserByOrgcode" parameterType="com.sama.springbootdemo01.system.model.User" resultType="com.sama.springbootdemo01.system.model.User">
+		SELECT <include refid="BASE_COLUMN" /> FROM sys_user WHERE orgcode = like CONCAT(#{orgcode},'%') ORDER BY id asc
+	</select>
+
+	<!-- 分页查询用户列表 -->
+	<select id="findUserByPage" parameterType="com.sama.springbootdemo01.system.model.User" resultType="com.sama.springbootdemo01.system.model.User">
+		SELECT <include refid="BASE_COLUMN" /> FROM sys_user WHERE orgcode like CONCAT(#{orgcode},'%') ORDER BY id asc
+	</select>
+
+	<!-- 添加用户 -->
+	<insert id="userAdd" useGeneratedKeys="true" keyProperty="id" parameterType="com.sama.springbootdemo01.system.model.User">
+		INSERT INTO sys_user (realname, username, password, groupid, phone, email, orgcode) VALUES (#{realname}, #{username}, #{password}, #{groupid}, #{phone}, #{email}, #{orgcode});
+	</insert>
+
+	<!-- 修改用户 -->
+	<update id="userEdit">
+		UPDATE sys_user SET realname=#{realname}, username=#{username}, password=#{password}, groupid=#{groupid}, phone=#{phone}, email=#{email}, orgcode=#{orgcode} WHERE id=#{id}
+	</update>
+
+	<!-- 删除用户 -->
+	<delete id="userDel">
+		DELETE FROM sys_user where id = #{id};
+	</delete>
+
+	<!-- 根据用户组id获取用户数量 -->
+	<select id="countUserByGroupid" resultType="int">
+		SELECT COUNT(id) nums FROM sys_user WHERE groupid = #{groupid};
+	</select>
+
+	<!-- 用户登陆 -->
+	<select id="userLogin" resultType="com.sama.springbootdemo01.system.model.User">
+		SELECT <include refid="BASE_COLUMN" /> FROM sys_user where username=#{username} AND password=#{password}
+	</select>
+
+	<!-- 用户登陆更新数据 -->
+	<update id="updateLoginInfo">
+		UPDATE sys_user SET lastlogintime = #{lastlogintime}, nums = #{nums} WHERE id = #{id}
+	</update>
+
+</mapper>

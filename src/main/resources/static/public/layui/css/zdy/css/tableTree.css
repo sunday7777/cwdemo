@@ -1,0 +1,99 @@
+.code_tree {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  background-color: #ffffff;
+  border-top: 1px solid #e2e2e2;
+  border-right: 1px solid #e2e2e2;
+}
+.code_tree .code_tree-title {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.code_tree .code_tree-title li {
+  overflow: hidden;
+}
+.code_tree .code_tree-title li {
+  display: block;
+  overflow: hidden;
+}
+.code_tree .code_tree-title li > div {
+  float: left;
+  height: 39px;
+  line-height: 28px;
+  padding: 5px 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-left: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #f2f2f2;
+}
+.code_tree .code_tree-title li > div:first-child {
+  width: 40px;
+  padding: 5px 0;
+  text-align: center;
+}
+.code_tree .code_tree-title li > div:nth-child(2) {
+  width: calc(35% - 10px);
+}
+.code_tree .code_tree-title li > div:nth-child(3) {
+  width: calc(20% - 10px);
+}
+.code_tree .code_tree-title li > div:nth-child(4) {
+  width: calc(25% - 10px);
+}
+.code_tree .code_tree-title li > div:nth-child(5) {
+  width: calc(20% - 10px);
+}
+.code_tree .code_tree-centent {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.code_tree .code_tree-centent li {
+  overflow: hidden;
+}
+.code_tree .code_tree-centent li > a {
+  display: block;
+  overflow: hidden;
+}
+.code_tree .code_tree-centent li > a > div {
+  float: left;
+  height: 39px;
+  line-height: 28px;
+  padding: 5px 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-left: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #ffffff;
+}
+.code_tree .code_tree-centent li > a > div:first-child {
+  width: 40px;
+  padding: 5px 0;
+  text-align: center;
+}
+.code_tree .code_tree-centent li > a > div:nth-child(2) {
+  width: calc(35% - 10px);
+}
+.code_tree .code_tree-centent li > a > div:nth-child(3) {
+  width: calc(20% - 10px);
+}
+.code_tree .code_tree-centent li > a > div:nth-child(4) {
+  width: calc(25% - 10px);
+}
+.code_tree .code_tree-centent li > a > div:nth-child(5) {
+  width: calc(20% - 10px);
+}

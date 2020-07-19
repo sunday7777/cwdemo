@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.sama.springbootdemo01.system.dao.XzqhDao">
+
+    <sql id="ALL_COLUMN">
+        id, name, orgcode, grade, incode, upcode, remark
+    </sql>
+
+    <!-- 根据行政区划代码获取 -->
+    <select id="findXzqhByCode" resultType="com.sama.springbootdemo01.system.model.Xzqh">
+        SELECT <include refid="ALL_COLUMN" /> FROM sys_area WHERE orgcode = #{orgcode};
+    </select>
+
+    <!-- 获取下级行政区划 -->
+    <select id="getXzqhByUpcode" resultType="com.sama.springbootdemo01.system.model.Xzqh">
+        SELECT  <include refid="ALL_COLUMN" /> FROM sys_area WHERE  upcode = #{upcode};
+    </select>
+
+    <!-- 根据ID获取行政区划 -->
+    <select id="findXzqhById" resultType="com.sama.springbootdemo01.system.model.Xzqh">
+        SELECT <include refid="ALL_COLUMN" /> FROM sys_area WHERE id = #{id};
+    </select>
+
+    <!-- 添加行政区划 -->
+    <insert id="xzqhAdd">
+        INSERT INTO sys_area (name, orgcode, grade, incode, upcode, remark) VALUES (#{name}, #{orgcode}, #{grade}, #{incode}, #{upcode}, #{remark});
+    </insert>
+
+    <!-- 修改行政区划 -->
+    <update id="xzqhEdit">
+        UPDATE sys_area SET name=#{name}, orgcode= #{orgcode}, grade= #{grade}, incode= #{incode}, upcode= #{upcode}, remark= #{remark} WHERE id=#{id};
+    </update>
+
+    <!-- 删除行政区划 -->
+
+    <delete id="xzqhDel" >
+        DELETE FROM sys_area WHERE orgcode like CONCAT(#{orgcode},'%');
+    </delete>
+
+</mapper>

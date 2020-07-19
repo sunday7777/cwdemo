@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.sama.springbootdemo01.cw.dao.YspzDao">
+
+    <!-- 根据凭证号id查询原始凭证 -->
+    <select id="listYspzByPzid" resultType="com.sama.springbootdemo01.cw.model.Yspz">
+        select id, pzh_id, `name`, yname, addtime from cw_yspz where pzh_id = #{pzh_id} order by id asc;
+    </select>
+
+    <!-- 添加原始凭证 -->
+    <insert id="saveYspz">
+        insert into cw_yspz (pzh_id, `name`, yname, addtime) value(#{pzh_id},#{name},#{yname},#{addtime});
+    </insert>
+
+    <!-- 删除原始凭证 -->
+    <delete id="removeYspz">
+        delete from cw_yspz where id = #{id}
+    </delete>
+
+</mapper>

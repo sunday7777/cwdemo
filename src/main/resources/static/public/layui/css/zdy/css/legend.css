@@ -1,0 +1,117 @@
+.go-legend{
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+
+    font-size: 14px;
+}
+.go-legend > li{
+    float: left;
+
+    height: 40px;
+    padding-top: 10px;
+    margin-right: 25px;
+}
+.go-legend > li > div{
+    display: inline-block;
+
+    vertical-align: top;
+    line-height: 24px;
+    
+}
+.go-xb{
+    width: 20px;
+    height: 20px;
+    border: 2px solid #0D0D0D;
+}
+.go-nv{
+    border-radius: 50%;
+}
+.go-ic{
+    width: 15px;
+    height: 15px;
+    
+    margin-top: 5px;
+}
+.go-yg{
+    width: 25px;
+    height: 0;
+    margin-top: 10px;
+    border: 1px solid red;
+
+    transform-origin: center center;
+    transform: rotate(138deg);
+}
+
+.go-green{
+    background: green;
+}
+.go-green + div{
+    color: green;
+}
+.go-orange{
+    background: orange;
+}
+.go-orange + div{
+    color: orange;
+}
+.go-red{
+    background: red;
+}
+.go-red + div{
+    color: red;
+}
+.go-cyan{
+    background: cyan;
+}
+.go-cyan + div{
+    color: cyan;
+}
+.go-gold{
+    background: gold;
+}
+.go-gold + div{
+    color: gold;
+}
+.go-pink{
+    background: pink;
+}
+.go-pink + div{
+    color: pink;
+}
+.go-blue{
+    background: blue;
+}
+.go-blue + div{
+    color: blue;
+}
+.go-brown{
+    background: brown;
+}
+.go-brown + div{
+    color: brown;
+}
+.go-purple{
+    background: purple;
+}
+.go-purple + div{
+    color: purple;
+}
+.go-chartreuse{
+    background: chartreuse;
+}
+.go-chartreuse + div{
+    color: chartreuse;
+}
+.go-lightgray{
+    background: lightgray;
+}
+.go-lightgray + div{
+    color: lightgray;
+}
+.go-magenta{
+    background: magenta;
+}
+.go-magenta + div{
+    color: magenta;
+}

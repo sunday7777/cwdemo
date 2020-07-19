@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.sama.springbootdemo01.system.dao.UserFjDao">
+
+    <sql id="BASE_COLUMN">
+		id, oname, `name`, addtime, glid
+	</sql>
+
+
+    <!-- 添加用户附件 -->
+    <insert id="fjAdd" useGeneratedKeys="true" keyProperty="id" parameterType="com.sama.springbootdemo01.system.model.UserFj">
+		INSERT INTO sys_userfj (oname, `name`, addtime) values (#{oname}, #{name}, #{addtime});
+	</insert>
+
+	<!-- 根据id查询附件 -->
+	<select id="getUserFjById" resultType="com.sama.springbootdemo01.system.model.UserFj">
+		SELECT <include refid="BASE_COLUMN" /> FROM sys_userfj WHERE id=#{id}
+	</select>
+
+	<!-- 关联用户 -->
+	<update id="setGlid">
+		UPDATE sys_userfj SET glid = #{glid} WHERE id = #{id}
+	</update>
+
+	<!-- 根据用户id查询附件 -->
+	<select id="listUserFjByUserId" resultType="com.sama.springbootdemo01.system.model.UserFj">
+		SELECT <include refid="BASE_COLUMN" /> FROM sys_userfj WHERE glid = #{userid} ORDER BY id desc
+	</select>
+
+
+</mapper>

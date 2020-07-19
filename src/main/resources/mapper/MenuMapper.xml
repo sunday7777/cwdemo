@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.sama.springbootdemo01.system.dao.MenuDao">
+
+
+	<!-- 查询全部菜单 -->
+	<select id="findAll" parameterType="com.sama.springbootdemo01.system.model.Menu" resultType="com.sama.springbootdemo01.system.model.Menu">
+		SELECT `name`,url,id,sort,code,pcode,icon FROM sys_menu as m WHERE url!='' ORDER By sort asc;
+	</select>
+
+	<!-- 查询一级菜单 -->
+	<select id="findOne" parameterType="com.sama.springbootdemo01.system.model.Menu" resultType="com.sama.springbootdemo01.system.model.Menu">
+		SELECT m.name,m.url,m.id,m.sort,m.code,m.pcode,m.icon FROM sys_menu AS m
+		LEFT JOIN  sys_quanxian  as q on q.menuid = m.id
+		LEFT JOIN  sys_usergroup as g on g.id = q.groupid
+		LEFT JOIN  sys_user as u on u.groupid = g.id
+		WHERE u.username = #{username} AND pcode = ''
+		ORDER By sort asc;
+	</select>
+
+	<!-- 查询子菜单 -->
+	<select id="findSon" parameterType="com.sama.springbootdemo01.system.model.Menu" resultType="com.sama.springbootdemo01.system.model.Menu">
+		SELECT m.name,m.url,m.id,m.sort,m.code,m.pcode,m.icon FROM sys_menu AS m
+		LEFT JOIN  sys_quanxian  as q on q.menuid = m.id
+		LEFT JOIN  sys_usergroup as g on g.id = q.groupid
+		LEFT JOIN  sys_user as u on u.groupid = g.id
+		WHERE u.username = #{username} AND pcode = #{code}
+		ORDER By sort asc;
+	</select>
+
+	<!-- 根据用户id获取菜单 -->
+	<select id="findMenuByUserid" parameterType="com.sama.springbootdemo01.system.model.Menu" resultType="com.sama.springbootdemo01.system.model.Menu">
+		SELECT m.name,m.url FROM sys_menu as m
+		LEFT JOIN  sys_quanxian  as q on q.menuid = m.id
+		LEFT JOIN  sys_usergroup as g on g.id = q.groupid
+		LEFT JOIN  sys_user as u on u.groupid = g.id
+		WHERE u.id = #{userid}
+	</select>
+
+
+
+
+</mapper>

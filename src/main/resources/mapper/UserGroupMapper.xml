@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.sama.springbootdemo01.system.dao.UserGroupDao">
+
+	<sql id="BASE_COLUMN">
+		id, `name`, `describe`, orgcode, create_time
+	</sql>
+
+	<!-- 分页查询用户组列表 -->
+	<select id="listUserGroupByPage" parameterType="com.sama.springbootdemo01.system.model.UserGroup" resultType="com.sama.springbootdemo01.system.model.UserGroup">
+		SELECT <include refid="BASE_COLUMN" /> FROM sys_usergroup ORDER BY id asc
+	</select>
+
+	<!-- 根据ID查询用户组 -->
+	<select id="getUserGroupById" resultType="com.sama.springbootdemo01.system.model.UserGroup">
+		SELECT <include refid="BASE_COLUMN" /> FROM sys_usergroup WHERE id = #{id}
+	</select>
+
+	<!-- 添加用户组 -->
+	<insert id="saveUserGroup" parameterType="com.sama.springbootdemo01.system.model.UserGroup">
+		INSERT  INTO sys_usergroup (`name`, `describe`, create_time) VALUES (#{name}, #{describe}, #{create_time})
+	</insert>
+
+	<!-- 修改用户 -->
+	<update id="updateUserGroup" parameterType="com.sama.springbootdemo01.system.model.UserGroup">
+        UPDATE sys_usergroup SET `name`=#{name}, `describe`=#{describe} WHERE id = #{id}
+	</update>
+
+    <!-- 删除用户 -->
+    <delete id="removeUserGroup">
+        DELETE FROM sys_usergroup WHERE id = #{id};
+    </delete>
+
+	<!-- 查询用户组 -->
+	<select id="listUserGroupByOrgcode" resultType="com.sama.springbootdemo01.system.model.UserGroup">
+		SELECT <include refid="BASE_COLUMN" /> FROM sys_usergroup ORDER BY id asc
+	</select>
+
+</mapper>

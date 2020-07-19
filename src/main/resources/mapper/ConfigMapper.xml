@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.sama.springbootdemo01.cw.dao.ConfigDao">
+
+    <sql id="ALL_COLUMN">
+        id, ztmc, qyrq, dqny, kmcd, kmjc, orgcode
+    </sql>
+
+	<!-- 设置系统参数 -->
+	<update id="setConfig">
+		update cw_config set ztmc = #{ztmc}, qyrq = #{qyrq}, dqny = #{dqny}, kmcd = #{kmcd}, kmjc = #{kmjc}, orgcode = #{orgcode} where id = #{id}
+	</update>
+
+    <!-- 查询系统参数 -->
+    <select id="getConfigById" resultType="com.sama.springbootdemo01.cw.model.Config">
+        select <include refid="ALL_COLUMN" /> from cw_config where id = #{id}
+    </select>
+
+
+</mapper>

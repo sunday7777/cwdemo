@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.sama.springbootdemo01.system.dao.QuanxianDao">
+
+
+	<!-- 根据groupid获取quanxian -->
+	<select id="getQuanxianByGId" parameterType="com.sama.springbootdemo01.system.model.Quanxian" resultType="com.sama.springbootdemo01.system.model.Quanxian">
+		SELECT * FROM sys_quanxian WHERE  GROUPID = #{gid}
+	</select>
+
+	<!-- 根据用户组id删除权限 -->
+	<delete id="removeQuanxianByGroupId">
+		DELETE FROM sys_quanxian WHERE GROUPID = #{gid}
+	</delete>
+
+	<!-- 保存用户组权限 -->
+	<insert id="saveQuanxian">
+		INSERT INTO sys_quanxian (groupid, menuid, sysid) VALUES
+		<foreach item="item" collection="midList" separator=",">
+			(#{gid}, #{item}, 1)
+		</foreach>
+	</insert>
+
+</mapper>

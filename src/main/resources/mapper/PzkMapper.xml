@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.sama.springbootdemo01.cw.dao.PzkDao">
+
+    <!-- 根据凭证id查询凭证库-->
+    <select id="listPzkByPzid" resultType="com.sama.springbootdemo01.cw.model.Pzk">
+        selete id, zy, kmmc, kmdm, jfje, dfje, pzh_id from pzk where pzh_id = #{pzh_id};
+    </select>
+
+    <!-- 添加凭证 -->
+    <insert id="savePzk">
+        insert into cw_pzk (zy, kmmc, kmdm, jfje, dfje, pzh_id) value (#{zy}, #{kmmc}, #{kmdm}, #{jfje}, #{dfje}, #{pzhId});
+    </insert>
+
+    <!-- 批量添加凭证 -->
+    <insert id="savePzkAll" parameterType="java.util.List" useGeneratedKeys="false">
+        insert into cw_pzk (zy, kmmc, kmdm, jfje, dfje, pzh_id)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+         (#{item.zy}, #{item.kmmc}, #{item.kmdm}, #{item.jfje}, #{item.dfje}, #{item.pzhId})
+        </foreach>
+    </insert>
+
+    <!-- 修改凭证 -->
+    <update id="updatePzk">
+        update cw_pzk set zy = #{zy}, kmmc = #{kmmc}, kmdm = #{kmdm}, jfje = #{jfje}, dfje = #{dfje} where id = #{id};
+    </update>
+
+    <!-- 删除凭证 -->
+    <delete id="removePzk">
+        delete from cw_pzk where id = #{id};
+    </delete>
+
+    <!-- 根据凭证id删除凭证库 -->
+    <delete id="removePzksByPzId">
+        delete from cw_pzk where pzh_id = #{pzid}
+    </delete>
+
+</mapper>

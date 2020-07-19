@@ -1,0 +1,79 @@
+@charset "UTF-8";
+/* 
+ * 说明：table 初始化样式
+ *
+ */
+/*============================== 修改默认样式 Strat ==============================*/
+.layui-table {
+  margin: 0;
+  /*修改复选框变形 */
+  /* 修改开关变形 */
+}
+.layui-table .layui-form-checkbox {
+  height: 25px;
+  line-height: 22px;
+}
+.layui-table .layui-form-switch {
+  margin-top: 0;
+  width: 54px;
+  height: 24px;
+}
+
+.layui-table-view {
+  margin: 0;
+  height: 100%;
+}
+
+/***** layui 样式不需要用 *****/
+.layui-table-click {
+  background-color: transparent !important;
+}
+
+/***** 自定义 表格选中背景色 *****/
+.zdy-layui-table-click {
+  background-color: #ececec !important;
+}
+
+/*============================== 自定义类 Strat ==============================*/
+/***** 修改表格内快关 Strat *****/
+.zdy-table-switch + div.layui-form-switch {
+  margin-top: 0;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+/***** 修改表格内快关 End *****/
+/********** 表格内部有 form 控件增加此类 Strat **********/
+.zdy-form-select .layui-table-cell {
+  overflow: inherit;
+}
+
+/********** 表格内部有 form 控件增加此类 End **********/
+/********** 各种状态 Strat **********/
+/***** 删除线 Start *****/
+.zdy_type-remove::after, .zdy_type-remove::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+}
+
+.zdy_type-remove {
+  position: relative;
+  float: left;
+}
+.zdy_type-remove::after {
+  border-bottom: 1px solid red;
+  -webkit-transform: translatey(-50%) rotatez(-10deg);
+          transform: translatey(-50%) rotatez(-10deg);
+}
+.zdy_type-remove::before {
+  border-bottom: 1px solid red;
+  -webkit-transform: translatey(-50%) rotatez(10deg);
+          transform: translatey(-50%) rotatez(10deg);
+}
+
+/***** 删除线 End *****/
+/********** 各种状态 End **********/

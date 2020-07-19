@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.sama.springbootdemo01.cw.dao.KmzdDao">
+
+    <!-- 查询一级科目 -->
+    <select id="listKmzdOne" resultType="com.sama.springbootdemo01.cw.model.Kmzd">
+        select id,kmbh,kmmc,kmxz,mxkm from cw_kmzd where kmbh like CONCAT(#{type},'%') and kmjs = 1;
+    </select>
+
+    <!-- 查询下级科目 -->
+    <select id="listKmzdByPbh" resultType="com.sama.springbootdemo01.cw.model.Kmzd">
+        select id,kmbh,kmmc,kmxz,mxkm from cw_kmzd where pbh = #{kmbh}
+    </select>
+
+    <!-- 根据id查询科目 -->
+    <select id="getKmzdById" resultType="com.sama.springbootdemo01.cw.model.Kmzd">
+        select id,kmbh,kmmc,kmxz,mxkm from cw_kmzd where id = #{id}
+    </select>
+
+    <!-- 新增科目 -->
+    <insert id="saveKmzd">
+        insert into
+        cw_kmzd (kmbh,kmmc,kmxz,kmjs,pbh,mxkm,qcye_jie,qcye_dai,yefx)
+        value
+        (#{kmbh},#{kmmc},#{kmxz},#{kmjs},#{pbh},#{mxkm},#{qcye_jie},#{qcye_dai},#{yefx})
+    </insert>
+
+    <!-- 修改科目 -->
+    <update id="updateKmzd">
+        update cw_kmzd set
+        kmbh = #{kmbh} ,kmmc = #{kmmc} ,kmxz = #{kmxz} ,kmjs = #{kmjs} ,pbh = #{pbh}
+        ,mxkm = #{mxkm} ,qcye_jie = #{qcye_jie},qcye_dai = #{qcye_dai},yefx = #{yefx}
+        where id = #{id}
+    </update>
+
+    <!-- 删除科目 -->
+    <delete id="removeKmzd">
+        delete from cw_kmzd where id = #{id}
+    </delete>
+
+
+</mapper>

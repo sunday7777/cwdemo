@@ -1,0 +1,26 @@
+/* 
+ * 说明： 修改默认样式
+ *
+ */
+$bcolor:#16b8bd;
+
+/***** 表单样式 修改文字默认宽度（解决文字太长换行问题） Strat *****/
+.layui-form-label{width: auto;min-width: 80px;}
+/***** 表单样式 修改文字默认宽度（解决文字太长换行问题） End *****/
+
+/***** 修改按钮颜色 Strat *****/
+.layui-btn {background-color:$bcolor;}
+.layui-btn-primary {border: 1px solid #C9C9C9;background-color: #fff;color: #555;}
+.layui-btn-normal {background-color: #1e9fff;}
+.layui-btn-warm {background-color: #FFB800;}
+.layui-btn-danger,
+.layui-bg-red {background-color: #ff8058 !important;}
+.layui-btn-disabled,
+.layui-btn-disabled:active,
+.layui-btn-disabled:hover {border: 1px solid #e6e6e6;background-color: #FBFBFB;color: #C9C9C9;cursor: not-allowed;opacity: 1;}
+/***** 修改按钮颜色 End *****/
+
+.layui-nav-tree{
+    .layui-nav-bar{background-color:$bcolor;}
+    .layui-nav-child dd.layui-this a{background-color:$bcolor;}
+}
